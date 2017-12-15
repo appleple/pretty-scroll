@@ -1,6 +1,6 @@
 {
   "name": "shadow-scroll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "shadow-scroll",
   "homepage": "http://developer.a-blogcms.jp",
   "main": "lib/index.js",
