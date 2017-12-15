@@ -11,7 +11,7 @@ const defaults = {
 export default class ShadowScroll {
   constructor(ele, option) {
     this.opt = assign({}, defaults, option);
-    this.scrollAmount = - this.opt.offsetTop;;
+    this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);

@@ -6,7 +6,7 @@
  *   license: appleple
  *   author: appleple
  *   homepage: http://developer.a-blogcms.jp
- *   version: 0.0.3
+ *   version: 0.0.4
  *
  * es6-object-assign:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -117,7 +117,7 @@ var ShadowScroll = function () {
     _classCallCheck(this, ShadowScroll);
 
     this.opt = assign({}, defaults, option);
-    this.scrollAmount = -this.opt.offsetTop;;
+    this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
