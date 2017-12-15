@@ -20,6 +20,18 @@ yarn add shadow-scroll
 
 ### Basic
 
+```html
+<div class="js-container">
+	<div class="main">
+	</div>
+	<div class="sub">
+	  <div class="js-shadow-scroll">
+	  <!-- contents here -->
+	  </div>
+	</div>
+</div>
+```
+
 ```js
 new ShadowScroll('.js-shadow-scroll',{
 	container: '.js-container',
