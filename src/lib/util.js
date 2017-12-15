@@ -67,3 +67,11 @@ export const outerHeight = (el) => {
   height += parseInt(style.marginTop) + parseInt(style.marginBottom);
   return height;
 }
+
+export const selfHeight = (el) => {
+  let height = el.offsetHeight;
+  const style = getComputedStyle(el);
+
+  height -= parseInt(style.paddingTop) + parseInt(style.paddingBottom);
+  return height;
+}

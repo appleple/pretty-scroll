@@ -1,4 +1,4 @@
-import { before, getScrollTop, getOffset, outerHeight } from '../lib/util';
+import { before, getScrollTop, getOffset, outerHeight, selfHeight } from '../lib/util';
 
 const assign = require('es6-object-assign').assign;
 
@@ -49,6 +49,7 @@ export default class ShadowScroll {
     const limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
     const offsetHeight = thisHeight - windowHeight;
     const style = {};
+
     if (!condition()) {
       this.applyStyle({
         position: 'static',
@@ -56,6 +57,7 @@ export default class ShadowScroll {
       });
       return;
     }
+
     if (breakpoint >= windowWidth) {
       this.applyStyle({
         position: 'static',
@@ -63,6 +65,16 @@ export default class ShadowScroll {
       });
       return;
     }
+
+    // when side column is larger than container
+    if (beforeElement.offsetTop + thisHeight >= selfHeight(containerElement)) {
+      this.applyStyle({
+        position: 'static',
+        width: targetWidth
+      });
+      return;
+    }
+
     if (beforeBottom + thisHeight > containerBottom) {
       this.applyStyle({
         position: 'static',

@@ -167,6 +167,7 @@ var ShadowScroll = function () {
       var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
       var offsetHeight = thisHeight - windowHeight;
       var style = {};
+
       if (!condition()) {
         this.applyStyle({
           position: 'static',
@@ -174,6 +175,7 @@ var ShadowScroll = function () {
         });
         return;
       }
+
       if (breakpoint >= windowWidth) {
         this.applyStyle({
           position: 'static',
@@ -181,6 +183,16 @@ var ShadowScroll = function () {
         });
         return;
       }
+
+      // when side column is larger than container
+      if (beforeElement.offsetTop + thisHeight >= (0, _util.selfHeight)(containerElement)) {
+        this.applyStyle({
+          position: 'static',
+          width: targetWidth
+        });
+        return;
+      }
+
       if (beforeBottom + thisHeight > containerBottom) {
         this.applyStyle({
           position: 'static',
@@ -315,6 +327,14 @@ var outerHeight = exports.outerHeight = function outerHeight(el) {
   var style = getComputedStyle(el);
 
   height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+};
+
+var selfHeight = exports.selfHeight = function selfHeight(el) {
+  var height = el.offsetHeight;
+  var style = getComputedStyle(el);
+
+  height -= parseInt(style.paddingTop) + parseInt(style.paddingBottom);
   return height;
 };
 
