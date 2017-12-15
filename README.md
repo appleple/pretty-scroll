@@ -34,6 +34,6 @@ yarn add shadow-scroll
 
 ```js
 new ShadowScroll('.js-shadow-scroll',{
-	container: '.js-container',
+  container: '.js-container',
 });
 ```
