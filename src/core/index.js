@@ -43,6 +43,7 @@ export default class ShadowScroll {
     const containerHeight = outerHeight(containerElement);
     const containerOffset = getOffset(containerElement).top;
     const containerBottom = containerHeight + containerOffset;
+    const limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
     const style = {};
     if (!condition()) {
       this.applyStyle({
@@ -65,17 +66,18 @@ export default class ShadowScroll {
       return;
     }
     style.width = `${beforeElement.offsetWidth}px`;
-    if (scroll + windowHeight <= containerBottom) {
+    if (scroll + limitHeight <= containerBottom) {
+      const offsetHeight = thisHeight - windowHeight;
       this.scrollAmount += scroll - this.scrollOld;
       this.scrollOld = scroll;
-      if (this.scrollAmount > thisHeight - windowHeight) {
-        this.scrollAmount = thisHeight - windowHeight;
+      if (this.scrollAmount > offsetHeight) {
+        this.scrollAmount = offsetHeight;
       } else if (this.scrollAmount < -offsetTop) {
         this.scrollAmount = -offsetTop;
       }
-      if (this.scrollAmount === thisHeight - windowHeight || this.scrollAmount === -offsetTop) {
+      if (this.scrollAmount === offsetHeight || this.scrollAmount === -offsetTop) {
         style.position = 'fixed';
-        if (this.scrollAmount === -offsetTop) {
+        if (this.scrollAmount === -offsetTop || thisHeight < windowHeight) {
           style.top = `${offsetTop}px`;
         } else {
           style.top = `${windowHeight - thisHeight}px`;
@@ -91,6 +93,7 @@ export default class ShadowScroll {
         style.left = '0px';
       }
     } else {
+      console.log('test');
       style.position = 'absolute';
       style.top = `${containerHeight - thisHeight}px`;
       style.left = '0px';

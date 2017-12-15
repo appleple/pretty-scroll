@@ -134,6 +134,7 @@ var ShadowScroll = function () {
       var containerHeight = (0, _util.outerHeight)(containerElement);
       var containerOffset = (0, _util.getOffset)(containerElement).top;
       var containerBottom = containerHeight + containerOffset;
+      var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
       var style = {};
       if (!condition()) {
         this.applyStyle({
@@ -156,17 +157,18 @@ var ShadowScroll = function () {
         return;
       }
       style.width = beforeElement.offsetWidth + 'px';
-      if (scroll + windowHeight <= containerBottom) {
+      if (scroll + limitHeight <= containerBottom) {
+        var offsetHeight = thisHeight - windowHeight;
         this.scrollAmount += scroll - this.scrollOld;
         this.scrollOld = scroll;
-        if (this.scrollAmount > thisHeight - windowHeight) {
-          this.scrollAmount = thisHeight - windowHeight;
+        if (this.scrollAmount > offsetHeight) {
+          this.scrollAmount = offsetHeight;
         } else if (this.scrollAmount < -offsetTop) {
           this.scrollAmount = -offsetTop;
         }
-        if (this.scrollAmount === thisHeight - windowHeight || this.scrollAmount === -offsetTop) {
+        if (this.scrollAmount === offsetHeight || this.scrollAmount === -offsetTop) {
           style.position = 'fixed';
-          if (this.scrollAmount === -offsetTop) {
+          if (this.scrollAmount === -offsetTop || thisHeight < windowHeight) {
             style.top = offsetTop + 'px';
           } else {
             style.top = windowHeight - thisHeight + 'px';
@@ -182,6 +184,7 @@ var ShadowScroll = function () {
           style.left = '0px';
         }
       } else {
+        console.log('test');
         style.position = 'absolute';
         style.top = containerHeight - thisHeight + 'px';
         style.left = '0px';
