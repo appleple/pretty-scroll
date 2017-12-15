@@ -209,7 +209,6 @@ var ShadowScroll = function () {
           style.left = '0px';
         }
       } else {
-        console.log('test');
         style.position = 'absolute';
         style.top = containerHeight - thisHeight + 'px';
         style.left = '0px';
