@@ -89,6 +89,8 @@ var defaults = {
 
 var ShadowScroll = function () {
   function ShadowScroll(ele, option) {
+    var _this = this;
+
     _classCallCheck(this, ShadowScroll);
 
     this.opt = assign({}, defaults, option);
@@ -99,8 +101,12 @@ var ShadowScroll = function () {
     (0, _util.before)(this.targetElement, '<div class="js-shadowscroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
-    window.addEventListener('scroll', this.onScroll.bind(this));
-    window.addEventListener('resize', this.onScroll.bind(this));
+    window.addEventListener('scroll', function () {
+      _this.onScroll();
+    });
+    window.addEventListener('resize', function () {
+      _this.onScroll();
+    });
   }
 
   _createClass(ShadowScroll, [{
@@ -133,7 +139,7 @@ var ShadowScroll = function () {
         this.applyStyle({
           position: 'static'
         });
-        return true;
+        return;
       }
       if (beforeBottom + thisHeight > containerBottom) {
         this.applyStyle({

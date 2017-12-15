@@ -18,8 +18,12 @@ export default class ShadowScroll {
     before(this.targetElement, '<div class="js-shadowscroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
-    window.addEventListener('scroll', this.onScroll.bind(this));
-    window.addEventListener('resize', this.onScroll.bind(this));
+    window.addEventListener('scroll', () => {
+      this.onScroll();
+    });
+    window.addEventListener('resize', () => {
+      this.onScroll();
+    });
   }
 
   applyStyle(style) {
@@ -44,7 +48,7 @@ export default class ShadowScroll {
       this.applyStyle({
         position: 'static'
       });
-      return true;
+      return;
     }
     if (beforeBottom + thisHeight > containerBottom) {
       this.applyStyle({
