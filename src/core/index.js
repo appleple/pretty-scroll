@@ -4,11 +4,9 @@ const assign = require('es6-object-assign').assign;
 
 const defaults = {
   container: 'body',
-  condition: () => {
-    return true;
-  },
+  condition: () => true,
   offsetTop: 0
-}
+};
 
 export default class ShadowScroll {
   constructor(ele, option) {
@@ -24,14 +22,14 @@ export default class ShadowScroll {
     window.addEventListener('resize', this.onScroll.bind(this));
   }
 
-  applyStyle (style) {
+  applyStyle(style) {
     const target = this.targetElement;
-    for (let key in style) {
+    for (const key in style) {
       target.style[key] = style[key];
     }
   }
 
-  onScroll () {
+  onScroll() {
     const scroll = getScrollTop();
     const { beforeElement, containerElement, targetElement } = this;
     const { offsetTop, condition } = this.opt;
@@ -58,7 +56,7 @@ export default class ShadowScroll {
     if (scroll < beforeBottom - offsetTop) {
       this.applyStyle({
         position: 'static'
-      })
+      });
       return;
     }
     style.width = `${beforeElement.offsetWidth}px`;
@@ -66,13 +64,13 @@ export default class ShadowScroll {
       this.scrollAmount += scroll - this.scrollOld;
       if (this.scrollAmount > thisHeight - windowHeight) {
         this.scrollAmount = thisHeight - windowHeight;
-      } else if (this.scrollAmount < - offsetTop) {
-        this.scrollAmount = - offsetTop;
+      } else if (this.scrollAmount < -offsetTop) {
+        this.scrollAmount = -offsetTop;
       }
       this.scrollOld = scroll;
-      if (this.scrollAmount === thisHeight - windowHeight || this.scrollAmount === - offsetTop) {
+      if (this.scrollAmount === thisHeight - windowHeight || this.scrollAmount === -offsetTop) {
         style.position = 'fixed';
-        if (this.scrollAmount === - offsetTop) {
+        if (this.scrollAmount === -offsetTop) {
           style.top = `${offsetTop}px`;
         } else {
           style.top = `${windowHeight - thisHeight}px`;

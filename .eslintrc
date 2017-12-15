@@ -18,6 +18,9 @@
     "no-mixed-operators": 0,
     "max-len": 0,
     "no-continue": 0,
+    "guard-for-in": 0,
+    "no-restricted-syntax": 0,
+    "consistent-return": 0,
     "no-undef": [
       "error",
       {
