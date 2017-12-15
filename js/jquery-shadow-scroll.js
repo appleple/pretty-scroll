@@ -117,7 +117,7 @@ var ShadowScroll = function () {
     _classCallCheck(this, ShadowScroll);
 
     this.opt = assign({}, defaults, option);
-    this.scrollAmount = 0;
+    this.scrollAmount = -this.opt.offsetTop;;
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
@@ -171,17 +171,18 @@ var ShadowScroll = function () {
         this.applyStyle({
           position: 'static'
         });
+        this.scrollOld = scroll;
         return;
       }
       style.width = beforeElement.offsetWidth + 'px';
       if (scroll + windowHeight <= containerBottom) {
         this.scrollAmount += scroll - this.scrollOld;
+        this.scrollOld = scroll;
         if (this.scrollAmount > thisHeight - windowHeight) {
           this.scrollAmount = thisHeight - windowHeight;
         } else if (this.scrollAmount < -offsetTop) {
           this.scrollAmount = -offsetTop;
         }
-        this.scrollOld = scroll;
         if (this.scrollAmount === thisHeight - windowHeight || this.scrollAmount === -offsetTop) {
           style.position = 'fixed';
           if (this.scrollAmount === -offsetTop) {
@@ -193,7 +194,7 @@ var ShadowScroll = function () {
         } else {
           style.position = 'absolute';
           if (scroll - this.scrollAmount < beforeBottom) {
-            style.top = beforeElement.offsetTop + offsetTop + 'px';
+            style.top = beforeElement.offsetTop + 'px';
           } else {
             style.top = scroll - this.scrollAmount - beforeBottom + 'px';
           }
