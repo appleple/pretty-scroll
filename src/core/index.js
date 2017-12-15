@@ -90,12 +90,12 @@ export default class ShadowScroll {
         } else {
           style.top = `${scroll - this.scrollAmount - beforeBottom}px`;
         }
-        style.left = '0px';
+        style.left = `${beforeElement.offsetLeft}px`;
       }
     } else {
       style.position = 'absolute';
       style.top = `${containerHeight - thisHeight}px`;
-      style.left = '0px';
+      style.left = `${beforeElement.offsetLeft}px`;
     }
     this.applyStyle(style);
   }

@@ -67,12 +67,12 @@ module.exports = {
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var ModalVideo = require('../index');
+var ScrollShadow = require('../index');
 
 var applyJQuery = function applyJQuery(jQuery) {
-  jQuery.fn.modalVideo = function (settings) {
+  jQuery.fn.ScrollShadow = function (settings) {
     if (typeof settings === 'strings') {} else {
-      new ModalVideo(this, settings);
+      new ScrollShadow(this, settings);
     }
     return this;
   };
@@ -206,12 +206,12 @@ var ShadowScroll = function () {
           } else {
             style.top = scroll - this.scrollAmount - beforeBottom + 'px';
           }
-          style.left = '0px';
+          style.left = beforeElement.offsetLeft + 'px';
         }
       } else {
         style.position = 'absolute';
         style.top = containerHeight - thisHeight + 'px';
-        style.left = '0px';
+        style.left = beforeElement.offsetLeft + 'px';
       }
       this.applyStyle(style);
     }

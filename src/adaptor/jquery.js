@@ -1,12 +1,12 @@
 'use strict';
 
-const ModalVideo = require('../index');
+const ScrollShadow = require('../index');
 
 const applyJQuery = (jQuery) => {
-  jQuery.fn.modalVideo = function(settings) {
+  jQuery.fn.ScrollShadow = function(settings) {
     if (typeof settings === 'strings'){
     } else {
-      new ModalVideo(this, settings);
+      new ScrollShadow(this, settings);
     }
     return this;
   }
