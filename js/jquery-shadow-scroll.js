@@ -6,7 +6,7 @@
  *   license: appleple
  *   author: appleple
  *   homepage: http://developer.a-blogcms.jp
- *   version: 0.0.8
+ *   version: 0.0.9
  *
  * es6-object-assign:
  *   license: MIT (http://opensource.org/licenses/MIT)

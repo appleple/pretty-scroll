@@ -62,7 +62,7 @@ export default class ShadowScroll {
         width: targetWidth
       });
       return;
-    } 
+    }
     if (beforeBottom + thisHeight > containerBottom) {
       this.applyStyle({
         position: 'static',
