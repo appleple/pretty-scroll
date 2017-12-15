@@ -5,7 +5,8 @@ const assign = require('es6-object-assign').assign;
 const defaults = {
   container: 'body',
   condition: () => true,
-  offsetTop: 0
+  offsetTop: 0,
+  breakpoint: 767
 };
 
 export default class ShadowScroll {
@@ -15,6 +16,7 @@ export default class ShadowScroll {
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
+    this.targetWidth = this.targetElement.style.width;
     before(this.targetElement, '<div class="js-shadowscroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
@@ -35,9 +37,10 @@ export default class ShadowScroll {
 
   onScroll() {
     const scroll = getScrollTop();
-    const { beforeElement, containerElement, targetElement } = this;
-    const { offsetTop, condition } = this.opt;
+    const { beforeElement, containerElement, targetElement, targetWidth } = this;
+    const { offsetTop, condition, breakpoint } = this.opt;
     const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
     const thisHeight = outerHeight(targetElement);
     const beforeBottom = getOffset(beforeElement).top;
     const containerHeight = outerHeight(containerElement);
@@ -48,20 +51,30 @@ export default class ShadowScroll {
     const style = {};
     if (!condition()) {
       this.applyStyle({
-        position: 'static'
+        position: 'static',
+        width: targetWidth
       });
       return;
     }
+    if (breakpoint >= windowWidth) {
+      this.applyStyle({
+        position: 'static',
+        width: targetWidth
+      });
+      return;
+    } 
     if (beforeBottom + thisHeight > containerBottom) {
       this.applyStyle({
-        position: 'static'
+        position: 'static',
+        width: targetWidth
       });
       return;
     }
 
     if (scroll < beforeBottom - offsetTop) {
       this.applyStyle({
-        position: 'static'
+        position: 'static',
+        width: targetWidth
       });
       this.scrollOld = scroll;
       return;
