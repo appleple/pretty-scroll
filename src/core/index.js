@@ -83,7 +83,7 @@ export default class ShadowScroll {
       this.scrollOld = scroll;
       return;
     }
-    
+
     style.width = `${beforeElement.offsetWidth}px`;
     if (scroll + limitHeight <= containerBottom) {
       this.scrollAmount += scroll - this.scrollOld;
