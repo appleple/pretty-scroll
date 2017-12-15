@@ -193,14 +193,6 @@ var ShadowScroll = function () {
         return;
       }
 
-      if (beforeBottom + thisHeight > containerBottom) {
-        this.applyStyle({
-          position: 'static',
-          width: targetWidth
-        });
-        return;
-      }
-
       if (scroll < beforeBottom - offsetTop) {
         this.applyStyle({
           position: 'static',
@@ -209,6 +201,7 @@ var ShadowScroll = function () {
         this.scrollOld = scroll;
         return;
       }
+
       style.width = beforeElement.offsetWidth + 'px';
       if (scroll + limitHeight <= containerBottom) {
         this.scrollAmount += scroll - this.scrollOld;
