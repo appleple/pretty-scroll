@@ -44,6 +44,7 @@ export default class ShadowScroll {
     const containerOffset = getOffset(containerElement).top;
     const containerBottom = containerHeight + containerOffset;
     const limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
+    const offsetHeight = thisHeight - windowHeight;
     const style = {};
     if (!condition()) {
       this.applyStyle({
@@ -67,7 +68,6 @@ export default class ShadowScroll {
     }
     style.width = `${beforeElement.offsetWidth}px`;
     if (scroll + limitHeight <= containerBottom) {
-      const offsetHeight = thisHeight - windowHeight;
       this.scrollAmount += scroll - this.scrollOld;
       this.scrollOld = scroll;
       if (this.scrollAmount > offsetHeight) {

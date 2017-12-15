@@ -135,6 +135,7 @@ var ShadowScroll = function () {
       var containerOffset = (0, _util.getOffset)(containerElement).top;
       var containerBottom = containerHeight + containerOffset;
       var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
+      var offsetHeight = thisHeight - windowHeight;
       var style = {};
       if (!condition()) {
         this.applyStyle({
@@ -158,7 +159,6 @@ var ShadowScroll = function () {
       }
       style.width = beforeElement.offsetWidth + 'px';
       if (scroll + limitHeight <= containerBottom) {
-        var offsetHeight = thisHeight - windowHeight;
         this.scrollAmount += scroll - this.scrollOld;
         this.scrollOld = scroll;
         if (this.scrollAmount > offsetHeight) {
