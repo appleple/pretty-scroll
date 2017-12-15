@@ -79,9 +79,9 @@ export default class ShadowScroll {
       } else {
         style.position = 'absolute';
         if (scroll - this.scrollAmount < beforeBottom) {
-          style.top = `${beforeBottom}px`;
+          style.top = `${beforeElement.offsetTop + offsetTop}px`;
         } else {
-          style.top = `${scroll - this.scrollAmount - containerOffset}px`;
+          style.top = `${scroll - this.scrollAmount - beforeBottom}px`;
         }
         style.left = '0px';
       }
