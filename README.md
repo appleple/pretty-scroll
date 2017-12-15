@@ -22,13 +22,13 @@ yarn add shadow-scroll
 
 ```html
 <div class="js-container">
-	<div class="main">
-	</div>
-	<div class="sub">
-	  <div class="js-shadow-scroll">
-	  <!-- contents here -->
-	  </div>
-	</div>
+  <div class="main">
+  </div>
+  <div class="sub">
+    <div class="js-shadow-scroll">
+      <!-- contents here -->
+    </div>
+  </div>
 </div>
 ```
 
