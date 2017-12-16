@@ -1,21 +1,21 @@
-# Shadow Scroll
+# Pretty Scroll
 
 
 ## Features
 
 ## Installation
-- [npm](https://www.npmjs.com/package/shadow-scroll)
-- [standalone](https://raw.githubusercontent.com/appleple/shadow-scroll/master/js/shadow-scroll.js)
+- [npm](https://www.npmjs.com/package/pretty-scroll)
+- [standalone](https://raw.githubusercontent.com/appleple/pretty-scroll/master/js/pretty-scroll.js)
 
 via npm
 ```shell
-npm install shadow-scroll --save
+npm install pretty-scroll --save
 ```
 
 or yarn
 
 ```shell
-yarn add shadow-scroll
+yarn add pretty-scroll
 ```
 
 ### Basic
@@ -25,7 +25,7 @@ yarn add shadow-scroll
   <div class="main">
   </div>
   <div class="sub">
-    <div class="js-shadow-scroll">
+    <div class="js-pretty-scroll">
       <!-- contents here -->
     </div>
   </div>
@@ -33,7 +33,7 @@ yarn add shadow-scroll
 ```
 
 ```js
-new ShadowScroll('.js-shadow-scroll',{
+new PrettyScroll('.js-pretty-scroll',{
   container: '.js-container',
 });
 ```
