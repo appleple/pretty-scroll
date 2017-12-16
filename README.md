@@ -1,5 +1,5 @@
 # Pretty Scroll
-
+A library to make an element follow you as you scroll
 
 ## Features
 
