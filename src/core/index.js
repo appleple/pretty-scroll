@@ -9,7 +9,7 @@ const defaults = {
   breakpoint: 767
 };
 
-export default class ShadowScroll {
+export default class PrettyScroll {
   constructor(ele, option) {
     this.opt = assign({}, defaults, option);
     this.scrollAmount = -this.opt.offsetTop;
@@ -17,7 +17,7 @@ export default class ShadowScroll {
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
     this.targetWidth = this.targetElement.style.width;
-    before(this.targetElement, '<div class="js-shadowscroll-before"></div>');
+    before(this.targetElement, '<div class="js-pretty-scroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
     window.addEventListener('scroll', () => {
