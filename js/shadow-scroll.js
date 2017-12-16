@@ -141,38 +141,31 @@ var ShadowScroll = function () {
       var containerBottom = containerHeight + containerOffset;
       var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
       var offsetHeight = thisHeight - windowHeight;
-      var style = {};
+      var beforeOffsetTop = beforeElement.offsetTop;
+      var beforeOffsetLeft = beforeElement.offsetLeft;
+      var style = {
+        position: 'static',
+        width: targetWidth
+      };
 
       if (!condition()) {
-        this.applyStyle({
-          position: 'static',
-          width: targetWidth
-        });
+        this.applyStyle(style);
         return;
       }
 
       if (breakpoint >= windowWidth) {
-        this.applyStyle({
-          position: 'static',
-          width: targetWidth
-        });
+        this.applyStyle(style);
         return;
       }
 
       // when side column is larger than container
-      if (beforeElement.offsetTop + thisHeight >= (0, _util.selfHeight)(containerElement)) {
-        this.applyStyle({
-          position: 'static',
-          width: targetWidth
-        });
+      if (beforeOffsetTop + thisHeight >= (0, _util.selfHeight)(containerElement)) {
+        this.applyStyle(style);
         return;
       }
 
       if (scroll < beforeBottom - offsetTop) {
-        this.applyStyle({
-          position: 'static',
-          width: targetWidth
-        });
+        this.applyStyle(style);
         this.scrollOld = scroll;
         return;
       }
@@ -197,16 +190,16 @@ var ShadowScroll = function () {
         } else {
           style.position = 'absolute';
           if (scroll - this.scrollAmount < beforeBottom) {
-            style.top = beforeElement.offsetTop + 'px';
+            style.top = beforeOffsetTop + 'px';
           } else {
             style.top = scroll - this.scrollAmount - beforeBottom + 'px';
           }
-          style.left = beforeElement.offsetLeft + 'px';
+          style.left = beforeOffsetLeft + 'px';
         }
       } else {
         style.position = 'absolute';
         style.top = containerHeight - thisHeight + 'px';
-        style.left = beforeElement.offsetLeft + 'px';
+        style.left = beforeOffsetLeft + 'px';
       }
       this.applyStyle(style);
     }

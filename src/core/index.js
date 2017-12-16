@@ -48,38 +48,31 @@ export default class ShadowScroll {
     const containerBottom = containerHeight + containerOffset;
     const limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
     const offsetHeight = thisHeight - windowHeight;
-    const style = {};
+    const beforeOffsetTop = beforeElement.offsetTop;
+    const beforeOffsetLeft = beforeElement.offsetLeft;
+    const style = {
+      position: 'static',
+      width: targetWidth
+    };
 
     if (!condition()) {
-      this.applyStyle({
-        position: 'static',
-        width: targetWidth
-      });
+      this.applyStyle(style);
       return;
     }
 
     if (breakpoint >= windowWidth) {
-      this.applyStyle({
-        position: 'static',
-        width: targetWidth
-      });
+      this.applyStyle(style);
       return;
     }
 
     // when side column is larger than container
-    if (beforeElement.offsetTop + thisHeight >= selfHeight(containerElement)) {
-      this.applyStyle({
-        position: 'static',
-        width: targetWidth
-      });
+    if (beforeOffsetTop + thisHeight >= selfHeight(containerElement)) {
+      this.applyStyle(style);
       return;
     }
 
     if (scroll < beforeBottom - offsetTop) {
-      this.applyStyle({
-        position: 'static',
-        width: targetWidth
-      });
+      this.applyStyle(style);
       this.scrollOld = scroll;
       return;
     }
@@ -104,16 +97,16 @@ export default class ShadowScroll {
       } else {
         style.position = 'absolute';
         if (scroll - this.scrollAmount < beforeBottom) {
-          style.top = `${beforeElement.offsetTop}px`;
+          style.top = `${beforeOffsetTop}px`;
         } else {
           style.top = `${scroll - this.scrollAmount - beforeBottom}px`;
         }
-        style.left = `${beforeElement.offsetLeft}px`;
+        style.left = `${beforeOffsetLeft}px`;
       }
     } else {
       style.position = 'absolute';
       style.top = `${containerHeight - thisHeight}px`;
-      style.left = `${beforeElement.offsetLeft}px`;
+      style.left = `${beforeOffsetLeft}px`;
     }
     this.applyStyle(style);
   }
