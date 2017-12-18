@@ -17,6 +17,7 @@ export default class PrettyScroll {
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
     this.targetWidth = this.targetElement.style.width;
+    this.targetBoxSizing = this.targetElement.style.boxSizing;
     before(this.targetElement, '<div class="js-pretty-scroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
@@ -37,7 +38,7 @@ export default class PrettyScroll {
 
   onScroll() {
     const scroll = getScrollTop();
-    const { beforeElement, containerElement, targetElement, targetWidth } = this;
+    const { beforeElement, containerElement, targetElement, targetWidth, targetBoxSizing } = this;
     const { offsetTop, condition, breakpoint } = this.opt;
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
@@ -52,7 +53,8 @@ export default class PrettyScroll {
     const beforeOffsetLeft = beforeElement.offsetLeft;
     const style = {
       position: 'static',
-      width: targetWidth
+      width: targetWidth,
+      boxSizing: targetBoxSizing
     };
 
     if (!condition()) {
@@ -78,6 +80,7 @@ export default class PrettyScroll {
     }
 
     style.width = `${beforeElement.offsetWidth}px`;
+    style.boxSizing = 'border-box';
     if (scroll + limitHeight <= containerBottom) {
       this.scrollAmount += scroll - this.scrollOld;
       this.scrollOld = scroll;

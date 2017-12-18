@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A library to make an element follow you as you scroll">
+    <meta name="author" content="">
+
+    <title>Pretty Scroll</title>
+    <style>
+        .long-contents {
+            height: 3000px;
+            background-color: pink;
+        }
+
+        .side-contents {
+            height: 900px;
+            background-color: purple;
+        }
+    </style>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">    
+
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link" href="#">New features</a>
+          <a class="nav-link" href="#">Press</a>
+          <a class="nav-link" href="#">New hires</a>
+          <a class="nav-link" href="#">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+        <h1 class="blog-title">Pretty Scroll</h1>
+        <p class="lead blog-description">A library to make an element follow you as you scroll</p>
+      </div>
+    </div>
+
+    <div class="container js-container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            <div class="long-contents"></div>
+          </div><!-- /.blog-post -->
+
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 offset-sm-1">
+          <div class="js-sidebar">
+            <div class="side-contents"></div>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <script src="../js/pretty-scroll.js"></script>
+    <script>
+      new PrettyScroll('.js-sidebar',{
+        container: '.js-container',
+        offsetTop: 20,
+        breakpoint: 575
+      });
+    </script>
+
+  </body>
+</html>

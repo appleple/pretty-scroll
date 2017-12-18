@@ -125,6 +125,7 @@ var PrettyScroll = function () {
     this.containerElement = document.querySelector(this.opt.container);
     this.targetElement = document.querySelector(ele);
     this.targetWidth = this.targetElement.style.width;
+    this.targetBoxSizing = this.targetElement.style.boxSizing;
     (0, _util.before)(this.targetElement, '<div class="js-pretty-scroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
     this.targetElement.parentElement.style.position = 'relative';
@@ -151,7 +152,8 @@ var PrettyScroll = function () {
       var beforeElement = this.beforeElement,
           containerElement = this.containerElement,
           targetElement = this.targetElement,
-          targetWidth = this.targetWidth;
+          targetWidth = this.targetWidth,
+          targetBoxSizing = this.targetBoxSizing;
       var _opt = this.opt,
           offsetTop = _opt.offsetTop,
           condition = _opt.condition,
@@ -170,7 +172,8 @@ var PrettyScroll = function () {
       var beforeOffsetLeft = beforeElement.offsetLeft;
       var style = {
         position: 'static',
-        width: targetWidth
+        width: targetWidth,
+        boxSizing: targetBoxSizing
       };
 
       if (!condition()) {
@@ -196,6 +199,7 @@ var PrettyScroll = function () {
       }
 
       style.width = beforeElement.offsetWidth + 'px';
+      style.boxSizing = 'border-box';
       if (scroll + limitHeight <= containerBottom) {
         this.scrollAmount += scroll - this.scrollOld;
         this.scrollOld = scroll;
