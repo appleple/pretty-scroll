@@ -51,6 +51,8 @@ export default class PrettyScroll {
     const offsetHeight = thisHeight - windowHeight;
     const beforeOffsetTop = beforeElement.offsetTop;
     const beforeOffsetLeft = beforeElement.offsetLeft;
+    const beforeDiffTop = beforeBottom - containerOffset;
+
     const style = {
       position: 'static',
       width: targetWidth,
@@ -108,7 +110,7 @@ export default class PrettyScroll {
       }
     } else {
       style.position = 'absolute';
-      style.top = `${containerHeight - thisHeight}px`;
+      style.top = `${containerHeight - thisHeight - beforeDiffTop}px`;
       style.left = `${beforeOffsetLeft}px`;
     }
     this.applyStyle(style);

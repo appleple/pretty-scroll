@@ -170,6 +170,8 @@ var PrettyScroll = function () {
       var offsetHeight = thisHeight - windowHeight;
       var beforeOffsetTop = beforeElement.offsetTop;
       var beforeOffsetLeft = beforeElement.offsetLeft;
+      var beforeDiffTop = beforeBottom - containerOffset;
+
       var style = {
         position: 'static',
         width: targetWidth,
@@ -227,7 +229,7 @@ var PrettyScroll = function () {
         }
       } else {
         style.position = 'absolute';
-        style.top = containerHeight - thisHeight + 'px';
+        style.top = containerHeight - thisHeight - beforeDiffTop + 'px';
         style.left = beforeOffsetLeft + 'px';
       }
       this.applyStyle(style);
