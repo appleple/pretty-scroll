@@ -1,91 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A library to make an element follow you as you scroll">
-    <meta name="author" content="">
 
-    <title>Pretty Scroll</title>
-    <style>
-        .long-contents {
-            height: 3000px;
-            background-color: pink;
-        }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A library to make an element follow you as you scroll">
+  <meta name="author" content="@appleplecom">
 
-        .side-contents {
-            height: 900px;
-            background-color: purple;
-        }
-    </style>
+  <title>Pretty Scroll</title>
+  <style>
+    .long-contents {
+      height: 3000px;
+      background-color: #000;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">    
+    .js-sidebar img {
+      margin-bottom: 20px;
+    }
 
-    <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
-  </head>
+    pre>code {
+      display: block;
+      font-size: 1rem;
+      border-radius: 6px !important;
+      color: #333;
+      line-height: 1.5;
+      overflow-x: scroll;
+      padding: 1.5rem !important;
+      border: 1px solid #eee;
+    }
+    .cp_embed_wrapper {
+      margin-bottom: 30px;
+    }
+  </style>
 
-  <body>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <!-- Custom styles for this template -->
+  <link href="blog.css" rel="stylesheet">
+</head>
 
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="nav blog-nav">
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="#">New features</a>
-          <a class="nav-link" href="#">Press</a>
-          <a class="nav-link" href="#">New hires</a>
-          <a class="nav-link" href="#">About</a>
-        </nav>
-      </div>
+<body>
+
+  <div class="blog-masthead">
+    <div class="container">
+      <nav class="nav blog-nav">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="https://github.com/appleple/pretty-scroll">GitHub</a>
+        <a class="nav-link" href="https://www.npmjs.com/package/pretty-scroll">npm</a>
+      </nav>
     </div>
+  </div>
 
-    <div class="blog-header">
-      <div class="container">
-        <h1 class="blog-title">Pretty Scroll</h1>
-        <p class="lead blog-description">A library to make an element follow you as you scroll</p>
+
+  <div class="container js-container">
+
+    <div class="row">
+
+      <div class="col-sm-8 blog-main">
+        <div class="blog-header">
+          <h1 class="blog-title">Pretty Scroll</h1>
+          <p class="lead blog-description">A library to make an element follow you as you scroll</p>
+        </div>
+        <div class="blog-post">
+
+          <h3>Installation</h3>
+          <p>npm</p>
+          <pre class="highlight"><code class="shell">npm install pretty-scroll --save</code></pre>
+          <p>or yarn</p>
+          <pre class="highlight"><code class="shell">yarn add pretty-scroll</code></pre>
+          <h3>CDN</h3>
+          <pre class="highlight"><code class="html">&lt;script src="https://unpkg.com/pretty-scroll@1.0.2/js/pretty-scroll.js"&gt;&lt;/script&gt;</code></pre>
+          <h3>Usage</h3>
+          <p>JavaScript</p>
+          <pre class="highlight"><code class="javascript">new PrettyScroll('.js-sidebar', {
+  container: '.js-container',
+  breakpoint: 575
+});</code></pre>
+          <p>HTML</p>
+          <pre class="highlight"><code class="html">&lt;div class="container js-container"&gt;
+  &lt;div class="main"&gt;
+  &lt;!-- main contents --&gt;
+  &lt;/div&gt;
+  &lt;div class="sub"&gt;
+    &lt;div class="js-sidebar"&gt;
+      &lt;!-- sticky contents --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <h3>Examples</h3>
+          <p>have 6 sticky banners on the side column</p>
+          <p data-height="326" data-theme-id="0" data-slug-hash="LeZWjm" data-default-tab="result" data-user="appleple" data-embed-version="2" data-pen-title="LeZWjm" class="codepen">See the Pen <a href="https://codepen.io/appleple/pen/LeZWjm/">LeZWjm</a> by appleple (<a href="https://codepen.io/appleple">@appleple</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          <p>have only 1 sticky banner on the side column</p>
+          <p data-height="323" data-theme-id="0" data-slug-hash="jYrBKr" data-default-tab="result" data-user="appleple" data-embed-version="2" data-pen-title="jYrBKr" class="codepen">See the Pen <a href="https://codepen.io/appleple/pen/jYrBKr/">jYrBKr</a> by appleple (<a href="https://codepen.io/appleple">@appleple</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        <!-- /.blog-post -->
+
+
       </div>
+      <!-- /.blog-main -->
+
+      <div class="col-sm-3 offset-sm-1">
+        <div class="js-sidebar">
+          <img src="http://placehold.it/300/428bca/fff?text=Banner 1">
+          <img src="http://placehold.it/300/428bca/fff?text=Banner 2">
+        </div>
+      </div>
+      <!-- /.blog-sidebar -->
+
     </div>
+    <!-- /.row -->
 
-    <div class="container js-container">
+  </div>
+  <!-- /.container -->
 
-      <div class="row">
-
-        <div class="col-sm-8 blog-main">
-
-          <div class="blog-post">
-            <div class="long-contents"></div>
-          </div><!-- /.blog-post -->
+  <footer class="blog-footer">
+    <p><a href="https://github.com/appleple/pretty-scroll">Pretty Scroll</a> is maintained by <a href="https://github.com/appleple">appleple</a>.</p>
+  </footer>
 
 
-        </div><!-- /.blog-main -->
+  <script src="https://unpkg.com/pretty-scroll@1.0.2/js/pretty-scroll.js"></script>
+  <script>
+    new PrettyScroll('.js-sidebar', {
+      container: '.js-container',
+      offsetTop: 20,
+      breakpoint: 575
+    });
+  </script>
 
-        <div class="col-sm-3 offset-sm-1">
-          <div class="js-sidebar">
-            <div class="side-contents"></div>
-          </div>
-        </div><!-- /.blog-sidebar -->
+</body>
 
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
-
-    <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-
-
-    <script src="../js/pretty-scroll.js"></script>
-    <script>
-      new PrettyScroll('.js-sidebar',{
-        container: '.js-container',
-        offsetTop: 20,
-        breakpoint: 575
-      });
-    </script>
-
-  </body>
 </html>
