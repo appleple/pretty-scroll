@@ -38,7 +38,7 @@
     <h1 class="logo is-small">Pretty Scroll</h1>
   </header>
 
-  <main class="main js-container">
+  <main class="main">
     <div class="content">
       <section class="section">
         <div class="inner">
@@ -83,7 +83,7 @@
         </div>
       </section>
     </div>
-    <aside class="sidebar">
+    <aside class="sidebar js-container">
       <div class="inner">
         <div class="js-sidebar">
         <div class="box">
@@ -127,10 +127,10 @@
   <script src="../js/pretty-scroll.js"></script>
   <script>
     new PrettyScroll('.js-sidebar', {
-      container: '.sidebar',
+      container: '.js-container',
       offsetTop: 20,
       offsetBottom: 20,
-      breakpoint: 575
+      breakpoint: 768
     });
   </script>
 </body>
