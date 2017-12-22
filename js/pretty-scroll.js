@@ -85,6 +85,7 @@ var defaults = {
     return true;
   },
   offsetTop: 0,
+  offsetBottom: 0,
   breakpoint: 767
 };
 
@@ -103,7 +104,8 @@ var PrettyScroll = function () {
     this.targetBoxSizing = this.targetElement.style.boxSizing;
     (0, _util.before)(this.targetElement, '<div class="js-pretty-scroll-before"></div>');
     this.beforeElement = this.targetElement.previousElementSibling;
-    this.targetElement.parentElement.style.position = 'relative';
+    this.parentElement = this.targetElement.parentElement;
+    this.parentElement.style.position = 'relative';
     window.addEventListener('scroll', function () {
       _this.onScroll();
     });
@@ -127,10 +129,12 @@ var PrettyScroll = function () {
       var beforeElement = this.beforeElement,
           containerElement = this.containerElement,
           targetElement = this.targetElement,
+          parentElement = this.parentElement,
           targetWidth = this.targetWidth,
           targetBoxSizing = this.targetBoxSizing;
       var _opt = this.opt,
           offsetTop = _opt.offsetTop,
+          offsetBottom = _opt.offsetBottom,
           condition = _opt.condition,
           breakpoint = _opt.breakpoint;
 
@@ -139,6 +143,7 @@ var PrettyScroll = function () {
       var thisHeight = (0, _util.outerHeight)(targetElement);
       var beforeBottom = (0, _util.getOffset)(beforeElement).top;
       var containerHeight = (0, _util.outerHeight)(containerElement);
+      var containerDiffBottom = parseInt(getComputedStyle(containerElement)['paddingBottom']);
       var containerOffset = (0, _util.getOffset)(containerElement).top;
       var containerBottom = containerHeight + containerOffset;
       var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
@@ -174,23 +179,22 @@ var PrettyScroll = function () {
         this.scrollOld = scroll;
         return;
       }
-
       style.width = beforeElement.offsetWidth + 'px';
       style.boxSizing = 'border-box';
-      if (scroll + limitHeight <= containerBottom) {
+      if (scroll + limitHeight <= containerBottom - containerDiffBottom + offsetBottom) {
         this.scrollAmount += scroll - this.scrollOld;
         this.scrollOld = scroll;
-        if (this.scrollAmount > offsetHeight) {
-          this.scrollAmount = offsetHeight;
+        if (this.scrollAmount > offsetHeight + offsetBottom) {
+          this.scrollAmount = offsetHeight + offsetBottom;
         } else if (this.scrollAmount < -offsetTop) {
           this.scrollAmount = -offsetTop;
         }
-        if (this.scrollAmount === offsetHeight || this.scrollAmount === -offsetTop) {
+        if (this.scrollAmount === offsetHeight + offsetBottom || this.scrollAmount === -offsetTop) {
           style.position = 'fixed';
           if (this.scrollAmount === -offsetTop || thisHeight < windowHeight) {
             style.top = offsetTop + 'px';
           } else {
-            style.top = windowHeight - thisHeight + 'px';
+            style.top = windowHeight - thisHeight - offsetBottom + 'px';
           }
           style.left = (0, _util.getOffset)(beforeElement).left + 'px';
         } else {
@@ -204,7 +208,7 @@ var PrettyScroll = function () {
         }
       } else {
         style.position = 'absolute';
-        style.top = containerHeight - thisHeight - beforeDiffTop + 'px';
+        style.top = containerHeight - thisHeight - beforeDiffTop - containerDiffBottom + 'px';
         style.left = beforeOffsetLeft + 'px';
       }
       this.applyStyle(style);
