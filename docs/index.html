@@ -1,83 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="author" content="steelydylan">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Pretty Scroll">
-  <meta property="og:title" content="Pretty Scroll">
-  <meta property="og:description" content="A library to make an element follow you as you scroll<">
-  <meta property="og:url" content="https://appleple.github.io/pretty-scroll/">
-  <meta property="og:image" content="./img/screenshot.png">
-  <meta name="twitter:site" content="Pretty Scroll">
-  <meta name="twitter:creator" content="@appleplecom">
-  <meta name="twitter:url" content="https://appleple.github.io/pretty-scroll/">
-  <meta name="twitter:title" content="Pretty Scroll">
-  <meta name="twitter:description" content="A library to make an element follow you as you scroll<">
-  <meta name="twitter:card" content="summary">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="">
-  <title>Pretty Scroll</title>
-  <link rel="stylesheet" href="https://unpkg.com/uny@latest/dist/css/uny.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <style>
-    .sidebar > .inner {
-      width: 300px;
-    }
-    @media screen and (max-width:768px) {
-        .sidebar {
-            width: auto;
-            max-width: none;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="steelydylan">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pretty Scroll">
+    <meta property="og:title" content="Pretty Scroll">
+    <meta property="og:description" content="A library to make an element follow you as you scroll<">
+    <meta property="og:url" content="https://appleple.github.io/pretty-scroll/">
+    <meta property="og:image" content="./img/screenshot.png">
+    <meta name="twitter:site" content="Pretty Scroll">
+    <meta name="twitter:creator" content="@appleplecom">
+    <meta name="twitter:url" content="https://appleple.github.io/pretty-scroll/">
+    <meta name="twitter:title" content="Pretty Scroll">
+    <meta name="twitter:description" content="A library to make an element follow you as you scroll<">
+    <meta name="twitter:card" content="summary">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <title>Pretty Scroll</title>
+    <link rel="stylesheet" href="https://unpkg.com/uny@latest/dist/css/uny.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <style>
+        .sidebar>.inner {
+            width: 300px;
         }
-        .sidebar > .inner {
-            width: auto;
+
+        .inner iframe {
+            height: 400px;
         }
-    }
-  </style>
+
+        @media screen and (max-width:768px) {
+            .sidebar {
+                width: auto;
+                max-width: none;
+            }
+            .sidebar>.inner {
+                width: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <main class="main">
-    <div class="content">
-      <section class="section">
-        <div class="inner">
-          <h2>Pretty Scroll</h2>
-          <p>A library to make an element follow you as you scroll<br><a class="github-button" href="https://github.com/appleple/pretty-scroll" data-show-count="true" aria-label="Star appleple/pretty-scroll on GitHub">Star</a></p>
-        </div>
-      </section>
-      <section class="section">
-        <div class="inner">
-          <h2>Installation</h2>
-          <p>npm</p>
-          <pre class="highlight" data-syntax="shell"><code class="shell">npm install pretty-scroll --save</code></pre>
-          <p>or yarn</p>
-          <pre class="highlight" data-syntax="shell"><code class="shell">yarn add pretty-scroll</code></pre>
-        </div>
-      </section>
-      <section class="section">
-        <div class="inner">
-          <h2>CDN</h2>
-          <pre class="highlight" data-syntax="html"><code class="html">&lt;script src="https://unpkg.com/pretty-scroll@1.1.0/js/pretty-scroll.js"&gt;&lt;/script&gt;</code></pre>
-        </div>
-      </section>
-      <section class="section">
-        <div class="inner">
-            <h2>Usage</h2>
-            <p>JavaScript</p>
-            <pre class="highlight" data-syntax="js"><code class="javascript">new PrettyScroll('.js-sidebar', {
+    <main class="main">
+        <div class="content">
+            <section class="section">
+                <div class="inner">
+                    <h2>Pretty Scroll</h2>
+                    <p>A library to make an element follow you as you scroll</p>
+                    <p><a href="./demo.html" class="button">To the demo page</a>
+                </div>
+            </section>
+            <section class="section">
+                <div class="inner">
+                    <h2>Installation</h2>
+                    <p>npm</p>
+                    <pre class="highlight" data-syntax="shell"><code class="shell">npm install pretty-scroll --save</code></pre>
+                    <p>or yarn</p>
+                    <pre class="highlight" data-syntax="shell"><code class="shell">yarn add pretty-scroll</code></pre>
+                </div>
+            </section>
+            <section class="section">
+                <div class="inner">
+                    <h2>CDN</h2>
+                    <pre class="highlight" data-syntax="html"><code class="html">&lt;script src="https://unpkg.com/pretty-scroll@1.1.0/js/pretty-scroll.js"&gt;&lt;/script&gt;</code></pre>
+                </div>
+            </section>
+            <section class="section">
+                <div class="inner">
+                    <h2>Usage</h2>
+                    <p>JavaScript</p>
+                    <pre class="highlight" data-syntax="js"><code class="javascript">new PrettyScroll('.js-sidebar', {
     container: '.js-container',
     breakpoint: 575, // stop running the js when the window size is smaller than 575px
     offsetTop: 20, // space between the sticky element and the top of the window
     offsetBottom: 20 // space between the sticky element and the bottom of the window
   });</code></pre>
-            <p>HTML</p>
-            <pre class="highlight" data-syntax="html"><code class="html">&lt;div class="container js-container"&gt;
+                    <p>HTML</p>
+                    <pre class="highlight" data-syntax="html"><code class="html">&lt;div class="container js-container"&gt;
     &lt;div class="main"&gt;
     &lt;!-- main contents --&gt;
     &lt;/div&gt;
@@ -87,61 +97,46 @@
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;</code></pre>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-    <aside class="sidebar js-container">
-      <div class="inner">
-        <div class="js-sidebar">
-        <div class="box">
-          <div class="card">
-            <h3>Github</h3>
-            <p>Visit Github page so to check the source code</p>
-            <p><a href="https://github.com/appleple/pretty-scroll" class="button"><i class="fa fa-github"></i> GitHub</a></p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="card">
-            <h3>npm</h3>
-            <p>npm install is also available</p>
-            <p><a href="https://www.npmjs.com/package/pretty-scroll" class="button">npm</a></p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="card">
-            <h3>banner</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus voluptas dicta consequuntur numquam nobis cupiditate
-              asperiores fuga id qui debitis.</p>
-          </div>
-        </div>
-        <div class="box">
-            <div class="card">
-              <h3>banner</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus voluptas dicta consequuntur numquam nobis cupiditate
-                asperiores fuga id qui debitis.</p>
-            </div>
-          </div>
-      </div>
-      </div>
-    </aside>
-  </main>
+        <aside class="sidebar js-container">
+            <div class="inner">
+                <div class="js-sidebar">
+                    <div class="box">
+                        <div class="card">
+                            <h3>Github</h3>
+                            <p>Visit Github page so to check the source code<br><a class="github-button" href="https://github.com/appleple/pretty-scroll"
+                            data-show-count="true" aria-label="Star appleple/pretty-scroll on GitHub">Star</a></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="card">
+                            <h3>npm</h3>
+                            <p><a href="https://www.npmjs.com/package/pretty-scroll">npm</a> is also available</p>                        
+                        </div>
+                    </div>
+                </div>
+        </aside>
+    </main>
 
-  <footer class="footer">
-    <small class="copyright">&copy; Pretty Scroll is maintained by <a href="https://github.com/appleple">appleple</a>.</small>
-    
-  </footer>
+    <footer class="footer">
+        <small class="copyright">&copy; Pretty Scroll is maintained by <a href="https://github.com/appleple">appleple</a>.</small>
 
-  <script src="https://unpkg.com/uny@latest/dist/js/uny.min.js"></script>
-  <script src="https://unpkg.com/pretty-scroll@1.1.0/js/pretty-scroll.js"></script>
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script>
-    new PrettyScroll('.js-sidebar', {
-      container: '.js-container',
-      offsetTop: 20,
-      offsetBottom: 20,
-      breakpoint: 768
-    });
-  </script>
+    </footer>
+    <a href="https://github.com/appleple/pretty-scroll"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <script src="https://unpkg.com/uny@latest/dist/js/uny.min.js"></script>
+    <script src="https://unpkg.com/pretty-scroll@1.1.0/js/pretty-scroll.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        new PrettyScroll('.js-sidebar', {
+            container: '.js-container',
+            offsetTop: 20,
+            offsetBottom: 20,
+            breakpoint: 768
+        });
+    </script>
 </body>
+
 </html>
