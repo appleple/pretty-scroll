@@ -40,14 +40,14 @@ export default class PrettyScroll {
 
   onScroll() {
     const scroll = getScrollTop();
-    const { beforeElement, containerElement, targetElement, parentElement, targetWidth, targetBoxSizing } = this;
+    const { beforeElement, containerElement, targetElement, targetWidth, targetBoxSizing } = this;
     const { offsetTop, offsetBottom, condition, breakpoint } = this.opt;
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
     const thisHeight = outerHeight(targetElement);
     const beforeBottom = getOffset(beforeElement).top;
     const containerHeight = outerHeight(containerElement);
-    const containerDiffBottom = parseInt(getComputedStyle(containerElement)['paddingBottom']);
+    const containerDiffBottom = parseInt(getComputedStyle(containerElement).paddingBottom, 10);
     const containerOffset = getOffset(containerElement).top;
     const containerBottom = containerHeight + containerOffset;
     const limitHeight = windowHeight > thisHeight ? thisHeight + offsetTop : windowHeight - offsetBottom;
