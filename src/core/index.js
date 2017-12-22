@@ -50,7 +50,7 @@ export default class PrettyScroll {
     const containerDiffBottom = parseInt(getComputedStyle(containerElement)['paddingBottom']);
     const containerOffset = getOffset(containerElement).top;
     const containerBottom = containerHeight + containerOffset;
-    const limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
+    const limitHeight = windowHeight > thisHeight ? thisHeight + offsetTop : windowHeight - offsetBottom;
     const offsetHeight = thisHeight - windowHeight;
     const beforeOffsetTop = beforeElement.offsetTop;
     const beforeOffsetLeft = beforeElement.offsetLeft;
@@ -85,7 +85,7 @@ export default class PrettyScroll {
     }
     style.width = `${beforeElement.offsetWidth}px`;
     style.boxSizing = 'border-box';
-    if (scroll + limitHeight <= containerBottom - containerDiffBottom + offsetBottom) {
+    if (scroll + limitHeight + containerDiffBottom <= containerBottom) {
       this.scrollAmount += scroll - this.scrollOld;
       this.scrollOld = scroll;
       if (this.scrollAmount > offsetHeight + offsetBottom) {
@@ -93,9 +93,9 @@ export default class PrettyScroll {
       } else if (this.scrollAmount < -offsetTop) {
         this.scrollAmount = -offsetTop;
       }
-      if (this.scrollAmount === offsetHeight + offsetBottom || this.scrollAmount === -offsetTop) {
+      if (this.scrollAmount === offsetHeight + offsetBottom || this.scrollAmount + offsetTop === 0) {
         style.position = 'fixed';
-        if (this.scrollAmount === -offsetTop || thisHeight < windowHeight) {
+        if (this.scrollAmount + offsetTop === 0 || thisHeight < windowHeight) {
           style.top = `${offsetTop}px`;
         } else {
           style.top = `${windowHeight - thisHeight - offsetBottom}px`;

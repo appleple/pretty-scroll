@@ -146,7 +146,7 @@ var PrettyScroll = function () {
       var containerDiffBottom = parseInt(getComputedStyle(containerElement)['paddingBottom']);
       var containerOffset = (0, _util.getOffset)(containerElement).top;
       var containerBottom = containerHeight + containerOffset;
-      var limitHeight = windowHeight > thisHeight ? thisHeight : windowHeight;
+      var limitHeight = windowHeight > thisHeight ? thisHeight + offsetTop : windowHeight - offsetBottom;
       var offsetHeight = thisHeight - windowHeight;
       var beforeOffsetTop = beforeElement.offsetTop;
       var beforeOffsetLeft = beforeElement.offsetLeft;
@@ -181,7 +181,7 @@ var PrettyScroll = function () {
       }
       style.width = beforeElement.offsetWidth + 'px';
       style.boxSizing = 'border-box';
-      if (scroll + limitHeight <= containerBottom - containerDiffBottom + offsetBottom) {
+      if (scroll + limitHeight + containerDiffBottom <= containerBottom) {
         this.scrollAmount += scroll - this.scrollOld;
         this.scrollOld = scroll;
         if (this.scrollAmount > offsetHeight + offsetBottom) {
@@ -189,9 +189,9 @@ var PrettyScroll = function () {
         } else if (this.scrollAmount < -offsetTop) {
           this.scrollAmount = -offsetTop;
         }
-        if (this.scrollAmount === offsetHeight + offsetBottom || this.scrollAmount === -offsetTop) {
+        if (this.scrollAmount === offsetHeight + offsetBottom || this.scrollAmount + offsetTop === 0) {
           style.position = 'fixed';
-          if (this.scrollAmount === -offsetTop || thisHeight < windowHeight) {
+          if (this.scrollAmount + offsetTop === 0 || thisHeight < windowHeight) {
             style.top = offsetTop + 'px';
           } else {
             style.top = windowHeight - thisHeight - offsetBottom + 'px';
