@@ -80,12 +80,14 @@
                 <div class="inner">
                     <h2>Usage</h2>
                     <p>JavaScript</p>
-                    <pre class="highlight" data-syntax="js"><code class="javascript">new PrettyScroll('.js-sidebar', {
+                    <pre class="highlight" data-syntax="js"><code class="javascript">import PrettyScroll from 'pretty-scroll'; //with browserify or webpack
+
+new PrettyScroll('.js-sidebar', {
     container: '.js-container',
     breakpoint: 575, // stop running the js when the window size is smaller than 575px
     offsetTop: 20, // space between the sticky element and the top of the window
     offsetBottom: 20 // space between the sticky element and the bottom of the window
-  });</code></pre>
+});</code></pre>
                     <p>HTML</p>
                     <pre class="highlight" data-syntax="html"><code class="html">&lt;div class="container js-container"&gt;
     &lt;div class="main"&gt;
