@@ -11,6 +11,7 @@
  * es6-object-assign:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Rubén Norte <rubennorte@gmail.com>
+ *   maintainers: rubennorte <rubennorte@gmail.com>
  *   homepage: https://github.com/rubennorte/es6-object-assign
  *   version: 1.1.0
  *
@@ -124,7 +125,7 @@ var PrettyScroll = function () {
     this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
-    this.targetElement = document.querySelector(ele);
+    this.targetElement = typeof ele === 'string' ? document.querySelector(ele) : ele;
     this.targetWidth = this.targetElement.style.width;
     this.targetBoxSizing = this.targetElement.style.boxSizing;
     (0, _util.before)(this.targetElement, '<div class="js-pretty-scroll-before"></div>');

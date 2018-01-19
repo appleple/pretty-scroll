@@ -16,7 +16,7 @@ export default class PrettyScroll {
     this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
     this.containerElement = document.querySelector(this.opt.container);
-    this.targetElement = document.querySelector(ele);
+    this.targetElement = typeof ele === 'string' ? document.querySelector(ele) : ele;
     this.targetWidth = this.targetElement.style.width;
     this.targetBoxSizing = this.targetElement.style.boxSizing;
     before(this.targetElement, '<div class="js-pretty-scroll-before"></div>');
