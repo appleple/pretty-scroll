@@ -63,22 +63,19 @@ export default class PrettyScroll {
     };
 
     if (!condition()) {
+      beforeElement.style.height = '0px';
       this.applyStyle(style);
       return;
     }
 
     if (breakpoint >= windowWidth) {
-      this.applyStyle(style);
-      return;
-    }
-
-    // when side column is larger than container
-    if (beforeOffsetTop + thisHeight >= selfHeight(containerElement)) {
+      beforeElement.style.height = '0px';
       this.applyStyle(style);
       return;
     }
 
     if (scroll < beforeBottom - offsetTop) {
+      beforeElement.style.height = '0px';
       this.applyStyle(style);
       this.scrollOld = scroll;
       return;
@@ -114,6 +111,9 @@ export default class PrettyScroll {
       style.position = 'absolute';
       style.top = `${containerHeight - thisHeight - beforeDiffTop - containerDiffBottom}px`;
       style.left = `${beforeOffsetLeft}px`;
+    }
+    if (style.position === 'absolute' || style.position === 'fixed') {
+      beforeElement.style.height = `${thisHeight}px`;
     }
     this.applyStyle(style);
   }

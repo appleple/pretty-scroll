@@ -184,22 +184,19 @@ var PrettyScroll = function () {
       };
 
       if (!condition()) {
+        beforeElement.style.height = '0px';
         this.applyStyle(style);
         return;
       }
 
       if (breakpoint >= windowWidth) {
-        this.applyStyle(style);
-        return;
-      }
-
-      // when side column is larger than container
-      if (beforeOffsetTop + thisHeight >= (0, _util.selfHeight)(containerElement)) {
+        beforeElement.style.height = '0px';
         this.applyStyle(style);
         return;
       }
 
       if (scroll < beforeBottom - offsetTop) {
+        beforeElement.style.height = '0px';
         this.applyStyle(style);
         this.scrollOld = scroll;
         return;
@@ -235,6 +232,9 @@ var PrettyScroll = function () {
         style.position = 'absolute';
         style.top = containerHeight - thisHeight - beforeDiffTop - containerDiffBottom + 'px';
         style.left = beforeOffsetLeft + 'px';
+      }
+      if (style.position === 'absolute' || style.position === 'fixed') {
+        beforeElement.style.height = thisHeight + 'px';
       }
       this.applyStyle(style);
     }
