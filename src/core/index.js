@@ -1,4 +1,4 @@
-import { before, getScrollTop, getOffset, outerHeight, selfHeight } from '../lib/util';
+import { before, getScrollTop, getOffset, outerHeight } from '../lib/util';
 
 const assign = require('es6-object-assign').assign;
 
