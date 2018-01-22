@@ -124,7 +124,7 @@ var PrettyScroll = function () {
     this.opt = assign({}, defaults, option);
     this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
-    this.containerElement = document.querySelector(this.opt.container);
+    this.containerElement = typeof this.opt.container === 'string' ? document.querySelector(this.opt.container) : this.opt.container;
     this.targetElement = typeof ele === 'string' ? document.querySelector(ele) : ele;
     this.targetWidth = this.targetElement.style.width;
     this.targetBoxSizing = this.targetElement.style.boxSizing;
