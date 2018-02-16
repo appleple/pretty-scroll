@@ -7,7 +7,7 @@ const defaults = {
   condition: () => true,
   offsetTop: 0,
   offsetBottom: 0,
-  breakpoint: 767
+  breakpoint: 0
 };
 
 export default class PrettyScroll {
