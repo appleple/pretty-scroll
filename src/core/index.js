@@ -50,7 +50,7 @@ export default class PrettyScroll {
     const containerDiffBottom = parseInt(getComputedStyle(containerElement).paddingBottom, 10);
     const containerOffset = getOffset(containerElement).top;
     const containerBottom = containerHeight + containerOffset;
-    const limitHeight = windowHeight > thisHeight ? thisHeight + offsetTop : windowHeight - offsetBottom;
+    const limitHeight = windowHeight > thisHeight ? thisHeight + offsetTop + offsetBottom : windowHeight;
     const offsetHeight = thisHeight - windowHeight;
     const beforeOffsetTop = beforeElement.offsetTop;
     const beforeOffsetLeft = beforeElement.offsetLeft;
@@ -109,7 +109,7 @@ export default class PrettyScroll {
       }
     } else {
       style.position = 'absolute';
-      style.top = `${containerHeight - thisHeight - beforeDiffTop - containerDiffBottom}px`;
+      style.top = `${containerHeight - thisHeight - beforeDiffTop - containerDiffBottom - offsetBottom}px`;
       style.left = `${beforeOffsetLeft}px`;
     }
     if (style.position === 'absolute' || style.position === 'fixed') {
