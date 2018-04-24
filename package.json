@@ -16,7 +16,6 @@
     "watch:js": "onchange \"src/\" -- npm run build:js",
     "sync": "browser-sync start --server './' --files './js/*.js' './css/*.css' --startPath '/test/index.html'",
     "start": "npm-run-all -p watch:js sync",
-    "prepublish": "npm run build:js && git add -A && git commit -m \"bumping version\"",
     "deploy": "np --no-cleanup"
   },
   "author": "appleple",
