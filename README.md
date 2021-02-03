@@ -28,7 +28,7 @@ yarn add pretty-scroll
   <div class="main">
   </div>
   <div class="sub">
-    <div class="js-pretty-scroll">
+    <div class="js-sidebar">
       <!-- contents here -->
     </div>
   </div>
