@@ -1,13 +1,15 @@
-import { before, getScrollTop, getOffset, outerHeight } from '../lib/util';
+import {
+  before, getScrollTop, getOffset, outerHeight
+} from '../lib/util';
 
-const assign = require('es6-object-assign').assign;
+const { assign } = require('es6-object-assign');
 
 const defaults = {
   container: 'body',
   condition: () => true,
   offsetTop: 0,
   offsetBottom: 0,
-  breakpoint: 0
+  breakpoint: 0,
 };
 
 export default class PrettyScroll {
@@ -23,12 +25,32 @@ export default class PrettyScroll {
     this.beforeElement = this.targetElement.previousElementSibling;
     this.parentElement = this.targetElement.parentElement;
     this.parentElement.style.position = 'relative';
-    window.addEventListener('scroll', () => {
-      this.onScroll();
+    this.onScroll = this.onScroll.bind(this);
+    this.onResize = this.onResize.bind(this);
+    window.addEventListener('scroll', this.onScroll);
+    window.addEventListener('resize', this.onResize);
+    this.updateFixedPosition();
+  }
+
+  destroy() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    if (this.beforeElement && this.beforeElement.parentElement) {
+      this.beforeElement.parentElement.removeChild(this.beforeElement);
+    }
+    this.applyStyle({
+      position: 'static',
+      width: this.targetWidth,
+      boxSizing: this.targetBoxSizing,
     });
-    window.addEventListener('resize', () => {
-      this.onScroll();
-    });
+  }
+
+  onScroll() {
+    this.updateFixedPosition();
+  }
+
+  onResize() {
+    this.updateFixedPosition();
   }
 
   applyStyle(style) {
@@ -38,10 +60,14 @@ export default class PrettyScroll {
     }
   }
 
-  onScroll() {
+  updateFixedPosition() {
     const scroll = getScrollTop();
-    const { beforeElement, containerElement, targetElement, targetWidth, targetBoxSizing } = this;
-    const { offsetTop, offsetBottom, condition, breakpoint } = this.opt;
+    const {
+      beforeElement, containerElement, targetElement, targetWidth, targetBoxSizing
+    } = this;
+    const {
+      offsetTop, offsetBottom, condition, breakpoint
+    } = this.opt;
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
     const thisHeight = outerHeight(targetElement);
@@ -59,7 +85,7 @@ export default class PrettyScroll {
     const style = {
       position: 'static',
       width: targetWidth,
-      boxSizing: targetBoxSizing
+      boxSizing: targetBoxSizing,
     };
 
     if (!condition()) {
