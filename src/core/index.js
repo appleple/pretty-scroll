@@ -2,8 +2,6 @@ import {
   before, getScrollTop, getOffset, outerHeight
 } from '../lib/util';
 
-const { assign } = require('es6-object-assign');
-
 const defaults = {
   container: 'body',
   condition: () => true,
@@ -14,7 +12,10 @@ const defaults = {
 
 export default class PrettyScroll {
   constructor(ele, option) {
-    this.opt = assign({}, defaults, option);
+    this.opt = {
+      ...defaults,
+      ...option,
+    };
     this.scrollAmount = -this.opt.offsetTop;
     this.scrollOld = 0;
     this.containerElement = typeof this.opt.container === 'string' ? document.querySelector(this.opt.container) : this.opt.container;
