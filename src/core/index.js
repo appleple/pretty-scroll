@@ -39,11 +39,11 @@ export default class PrettyScroll {
     if (this.beforeElement && this.beforeElement.parentElement) {
       this.beforeElement.parentElement.removeChild(this.beforeElement);
     }
-    this.applyStyle({
-      position: 'static',
-      width: this.targetWidth,
-      boxSizing: this.targetBoxSizing,
-    });
+    this.targetElement.style.removeProperty('position');
+    this.targetElement.style.removeProperty('width');
+    this.targetElement.style.removeProperty('box-sizing');
+    this.targetElement.style.removeProperty('top');
+    this.targetElement.style.removeProperty('left');
   }
 
   onScroll() {
